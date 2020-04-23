@@ -1,0 +1,30 @@
+{
+  "name": "mimetype",
+  "version": "1.0.0",
+  "description": "MIME Type parser ",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --experimental-specifier-resolution=node node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcoscaceres/MIMEType.git"
+  },
+  "keywords": [
+    "MIMEtype",
+    "MIME",
+    "MIME parser",
+    "WHATWG MIME Sniff"
+  ],
+  "author": "Marcos Cáceres",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/marcoscaceres/MIMEType/issues"
+  },
+  "homepage": "https://github.com/marcoscaceres/MIMEType#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^7.1.1"
+  },
+  "type": "module"
+}
