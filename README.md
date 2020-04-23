@@ -49,7 +49,7 @@ const mimetype = new MIMEType("text/html; charset=UTF-8");
 
 mimetype.parameters.has("charset"); // true
 
-for(const [key, value] from mimetype.parameters) {
+for(const [key, value] of mimetype.parameters) {
   console.log(key, value);
 }
 ```
