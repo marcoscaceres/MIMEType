@@ -1,10 +1,10 @@
 {
-  "name": "mimetype",
+  "name": "sniffy-mimetype",
   "version": "1.0.0",
-  "description": "MIME Type parser ",
+  "description": "MIME Type parser",
   "main": "index.js",
   "scripts": {
-    "test": "node --experimental-specifier-resolution=node node_modules/.bin/mocha"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/marcoscaceres/MIMEType#readme",
   "dependencies": {},
   "devDependencies": {
-    "mocha": "^7.1.1"
+    "mocha": "^9.0.2"
   },
   "type": "module"
 }
