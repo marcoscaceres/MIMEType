@@ -1,4 +1,4 @@
-import { MIMEType } from "../index.js";
+import { MIMEType, isValidMimeType, parseMimeType } from "../index.js";
 import assert from "assert";
 
 describe("MIMEType", () => {
@@ -42,6 +42,10 @@ describe("MIMEType", () => {
         TypeError,
         `Expected mimetype at ${i} to throw`
       );
+      assert.throws(()=>{
+        parseMimeType(invalidType);
+      });
+      assert.ok(!isValidMimeType(invalidType));
     }
   });
 

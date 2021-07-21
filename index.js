@@ -19,12 +19,6 @@ const HTTPQuotedString = /^[\u0009\u{0020}-\{u0073}\u{0080}-\u{00FF}]+$/u;
 export class MIMEType {
   constructor(input) {
     const { type, subtype, params } = parse(input);
-    if (type.trim() === "" || !HTTPTokenCodePoints.test(type)) {
-      throw new TypeError("Invalid type");
-    }
-    if (subtype.trim() === "" || !HTTPTokenCodePoints.test(subtype)) {
-      throw new TypeError("Invalid subtype");
-    }
     this.type = type.trim().toLowerCase();
     this.subtype = subtype.trimEnd().toLowerCase();
     this.parameters = new Map(Object.entries(params));
@@ -41,6 +35,15 @@ export class MIMEType {
     return serialize(this);
   }
 };
+
+export function isValidMimeType(text){
+  try {
+    parse(text);
+  } catch (e) {
+    return false;
+  }
+  return true;
+}
 
 /**
  * https://mimesniff.spec.whatwg.org/#serialize-a-mime-type
@@ -85,7 +88,7 @@ function serialize(mimeType) {
  *
  * @param {String} input
  */
-function parse(input) {
+export function parseMIMEType(input) {
   input = input.trim();
   if (!input) {
     throw new TypeError("Invalid input.");
@@ -177,6 +180,12 @@ function parse(input) {
   }
   if (paramName) {
     storeParam(params, paramName, paramValue);
+  }
+  if (type.trim() === "" || !HTTPTokenCodePoints.test(type)) {
+    throw new TypeError("Invalid type");
+  }
+  if (subtype.trim() === "" || !HTTPTokenCodePoints.test(subtype)) {
+    throw new TypeError("Invalid subtype");
   }
   return {
     type,
