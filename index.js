@@ -18,7 +18,7 @@ const HTTPQuotedString = /^[\u0009\u{0020}-\{u0073}\u{0080}-\u{00FF}]+$/u;
 
 export class MIMEType {
   constructor(input) {
-    const { type, subtype, params } = parse(input);
+    const { type, subtype, params } = parseMimeType(input);
     this.type = type.trim().toLowerCase();
     this.subtype = subtype.trimEnd().toLowerCase();
     this.parameters = new Map(Object.entries(params));
@@ -88,7 +88,7 @@ function serialize(mimeType) {
  *
  * @param {String} input
  */
-export function parseMIMEType(input) {
+export function parseMimeType(input) {
   input = input.trim();
   if (!input) {
     throw new TypeError("Invalid input.");
